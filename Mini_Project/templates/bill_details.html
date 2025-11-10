@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4">Bill #{{ bill.bill_id }}</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Customer:</strong> {{ bill.customer_name }}</p>
+        <p><strong>Pharmacist:</strong> {{ bill.pharmacist_name }}</p>
+      </div>
+      <div class="col-md-6 text-end">
+        <p><strong>Date:</strong> {{ bill.bill_date }}</p>
+        <p><strong>Total Amount:</strong> ₹{{ "%.2f"|format(bill.total_amount) }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4>Bill Items</h4>
+<table class="table table-bordered table-hover">
+  <thead class="table-primary">
+    <tr>
+      <th>Medicine</th>
+      <th>Brand</th>
+      <th>Qty</th>
+      <th>Rate</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items %}
+    <tr>
+      <td>{{ item.medicine_name }}</td>
+      <td>{{ item.brand }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>₹{{ "%.2f"|format(item.subtotal / item.quantity) }}</td>
+      <td>₹{{ "%.2f"|format(item.subtotal) }}</td>
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="5" class="text-center text-muted">No items in this bill.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr class="table-success">
+      <th colspan="4" class="text-end">Grand Total:</th>
+      <th>₹{{ "%.2f"|format(bill.total_amount) }}</th>
+    </tr>
+  </tfoot>
+</table>
+
+<div class="mt-4">
+  <a href="/bills" class="btn btn-secondary">Back to Bills</a>
+  <button onclick="window.print()" class="btn btn-info">Print Bill</button>
+</div>
+
+{% endblock %}

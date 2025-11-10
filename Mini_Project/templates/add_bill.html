@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create New Bill</h2>
+<form method="POST">
+  <div class="row">
+    <div class="col-md-6">
+      <label>Customer</label>
+      <select name="customer_id" class="form-control" required>
+        {% for c in customers %}
+        <option value="{{ c.customer_id }}">{{ c.customer_name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label>Pharmacist</label>
+      <select name="pharmacist_id" class="form-control" required>
+        {% for p in pharmacists %}
+        <option value="{{ p.pharmacist_id }}">{{ p.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <h5 class="mt-4">Medicines</h5>
+  <div id="items">
+    <div class="row item-row mb-2">
+      <div class="col-md-6">
+        <select name="medicine_id" class="form-control medicine-select" required>
+          {% for m in medicines %}
+          <option value="{{ m.medicine_id }}" data-cost="{{ m.cost }}">
+            {{ m.medicine_name }} (₹{{ m.cost }})
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-md-4">
+        <input type="number" name="quantity" min="1" value="1" class="form-control qty" required>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-danger remove-item">X</button>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" id="add-item" class="btn btn-info mt-2">+ Add Item</button>
+  <button type="submit" class="btn btn-success mt-3">Create Bill</button>
+</form>
+
+<script>
+document.getElementById('add-item').onclick = function() {
+  const template = document.querySelector('.item-row');
+  const clone = template.cloneNode(true);
+  clone.querySelectorAll('input, select').forEach(el => el.value = el.tagName === 'SELECT' ? el.options[0].value : '1');
+  document.getElementById('items').appendChild(clone);
+};
+
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('remove-item') && document.querySelectorAll('.item-row').length > 1) {
+    e.target.closest('.item-row').remove();
+  }
+});
+</script>
+{% endblock %}
