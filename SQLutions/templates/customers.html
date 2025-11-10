@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Customers</h2>
+<a href="#" data-bs-toggle="modal" data-bs-target="#addCustomerModal" class="btn btn-primary mb-3">+ Add Customer</a>
+
+<table class="table table-striped">
+  <thead><tr>
+    <th>ID</th><th>Name</th><th>DOB</th><th>Phone</th><th>City</th>
+  </tr></thead>
+  <tbody>
+    {% for c in customers %}
+    <tr>
+      <td>{{ c.customer_id }}</td>
+      <td>{{ c.customer_name }}</td>
+      <td>{{ c.date_of_birth }}</td>
+      <td>{{ c.phone }}</td>
+      <td>{{ c.address_city }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="addCustomerModal">
+  <div class="modal-dialog">
+    <form method="POST">
+      <div class="modal-content">
+        <div class="modal-header"><h5>Add Customer</h5></div>
+        <div class="modal-body">
+          <input type="text" name="name" placeholder="Full Name" class="form-control mb-2" required>
+          <input type="date" name="dob" class="form-control mb-2" required>
+          <select name="gender" class="form-control mb-2" required><option>M</option><option>F</option></select>
+          <input type="text" name="phone" placeholder="Phone" class="form-control mb-2" required>
+          <input type="text" name="street" placeholder="Street" class="form-control mb-2" required>
+          <input type="text" name="city" placeholder="City" class="form-control mb-2" required>
+          <input type="text" name="state" placeholder="State" class="form-control mb-2" required>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
