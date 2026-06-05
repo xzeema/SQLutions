@@ -75,30 +75,31 @@ python app.py
 ```
 Open your browser and navigate to:
 http://127.0.0.1:5000
---
+---
 ## Usage
-Home: Dashboard with navigation
-Customers: Add and view customers
-Bills: View all previous bills
-New Bill: Create new bill with live medicine search
-Type medicine name to get suggestions
-Add multiple medicines
-Submit to generate bill
---
+
+- Home: Dashboard with navigation
+- Customers: Add and view customers
+- Bills: View all previous bills
+- New Bill: Create new bill with live medicine search
+- Type medicine name to get suggestions
+- Add multiple medicines
+- Submit to generate bill
+---
 ## Database Features
 
-Triggers for age validation
-Proper foreign key relationships
-Complex joins and aggregate queries
-Stored procedures and functions for reporting
---
+- Triggers for age validation
+- Proper foreign key relationships
+- Complex joins and aggregate queries
+- Stored procedures and functions for reporting
+---
 ## Future Enhancements
 
-User authentication system
-PDF bill generation
-Stock management module
-Advanced analytics dashboard
-Search and filter improvements
+- User authentication system
+- PDF bill generation
+- Stock management module
+- Advanced analytics dashboard
+- Search and filter improvements
 --
 License
 This project is developed for academic purposes (DBMS Mini Project).
