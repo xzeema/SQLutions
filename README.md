@@ -106,6 +106,5 @@ http://127.0.0.1:5000
 - Search and filter improvements
 ---
 ### License
-
- This project is developed for academic purposes (DBMS Mini Project).
+    This project is developed for academic purposes (DBMS Mini Project).
 ---
