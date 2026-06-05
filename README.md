@@ -27,20 +27,23 @@ Made with Python, Flask and MySQL
 ---
 
 ## Project Structure
+
+```bash
 sqlutions-flask/
 ├── app.py                    # Main Flask Application
 ├── config.py                 # Database Configuration
-├── .env                      # Environment Variables
-├── requirements.txt
-├── templates/
-│   ├── base.html
-│   ├── index.html
-│   ├── customers.html
-│   ├── bills.html
-│   ├── bill_details.html
-│   └── add_bill.html
-└── static/
-└── style.css
+├── .env                      # Environment Variables (Git ignored)
+├── requirements.txt          # Python dependencies
+├── templates/                # HTML Templates
+│   ├── base.html             # Base layout template
+│   ├── index.html            # Homepage
+│   ├── customers.html        # Customer management page
+│   ├── bills.html            # All bills listing page
+│   ├── bill_details.html     # Individual bill details page
+│   └── add_bill.html         # Create new bill page
+└── static/                   # Static files
+    └── style.css             # Custom CSS styles
+```
 
 ---
 
@@ -75,6 +78,7 @@ python app.py
 ```
 Open your browser and navigate to:
 http://127.0.0.1:5000
+
 ---
 ## Usage
 
